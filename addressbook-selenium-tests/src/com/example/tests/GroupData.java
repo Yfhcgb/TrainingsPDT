@@ -1,7 +1,7 @@
 package com.example.tests;
 
 public class GroupData {
-	public String groupname;
+	public String name;
 	public String header;
 	public String footer;
 
@@ -9,7 +9,7 @@ public class GroupData {
 		
 	}
 	public GroupData(String groupname, String header, String footer) {
-		this.groupname = groupname;
+		this.name = groupname;
 		this.header = header;
 		this.footer = footer;
 	}

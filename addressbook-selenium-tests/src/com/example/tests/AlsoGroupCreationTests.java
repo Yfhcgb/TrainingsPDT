@@ -24,7 +24,7 @@ public class AlsoGroupCreationTests extends TestBase{
     goToGroupsPage();
     initNewGroupCreation();
     GroupData group = new GroupData();
-    group.groupname = "name 1";
+    group.name = "name 1";
     group.header = "header 1";
     group.footer = "footer 1";
 	fillGroupForm(group);
