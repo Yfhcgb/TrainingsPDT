@@ -4,23 +4,23 @@ import static org.junit.Assert.fail;
 
 import java.util.concurrent.TimeUnit;
 
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.NoAlertPresentException;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.testng.annotations.BeforeTest;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterTest;
-
-import com.example.fw.ApplicationManager;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeTest;
 
 
 public class TestBase {
-	
-	//protected com.example.fw.ApplicationManager app;  способ указать обращение к другому пакету через полное имя класса
-	protected ApplicationManager app;  // нажали стнрл+пробел появился новый импорт import com.example.fw.ApplicationManager;
-	
 
-	public static WebDriver driver;
-	public static String baseUrl;
-	public static boolean acceptNextAlert = true;
+	protected static WebDriver driver;
+	private static String baseUrl;
+	private static boolean acceptNextAlert = true;
 	private static StringBuffer verificationErrors = new StringBuffer();
 
 	@BeforeTest
@@ -37,6 +37,72 @@ public class TestBase {
 	      fail(verificationErrorString);
 	    }
 	  }
+	protected void openMainPage() {
+	    driver.get(baseUrl + "/addressbookv4.1.4/");
+}
+	protected void returnToGroupsPage() {
+		driver.findElement(By.linkText("group page")).click();
+	}
+
+	protected void submitGroupCreation() {
+		driver.findElement(By.name("submit")).click();
+	}
+
+	protected void fillGroupForm(GroupData group) {
+		driver.findElement(By.name("group_name")).clear();
+	    driver.findElement(By.name("group_name")).sendKeys(group.name);
+	    driver.findElement(By.name("group_header")).clear();
+	    driver.findElement(By.name("group_header")).sendKeys(group.header);
+	    driver.findElement(By.name("group_footer")).clear();
+	    driver.findElement(By.name("group_footer")).sendKeys(group.footer);
+	}
+
+	protected void initGroupCreation() {
+		driver.findElement(By.name("new")).click();
+	}
+
+	protected void goToGroupsPage() {
+		driver.findElement(By.linkText("groups")).click();
+	}
+
+	//protected void openContactsPage() {
+		//driver.get(baseUrl + "/addressbookv4.1.4/");
+	//}
+
+
+
+	private boolean isElementPresent(By by) {
+	    try {
+	      driver.findElement(by);
+	      return true;
+	    } catch (NoSuchElementException e) {
+	      return false;
+	    }
+	  }
+
+	private boolean isAlertPresent() {
+	    try {
+	      driver.switchTo().alert();
+	      return true;
+	    } catch (NoAlertPresentException e) {
+	      return false;
+	    }
+	  }
+
+	private String closeAlertAndGetItsText() {
+	    try {
+	      Alert alert = driver.switchTo().alert();
+	      String alertText = alert.getText();
+	      if (acceptNextAlert) {
+	        alert.accept();
+	      } else {
+	        alert.dismiss();
+	      }
+	      return alertText;
+	    } finally {
+	      acceptNextAlert = true;
+	    }
+	  }
+
 
 }
-//KatyaIvanova
