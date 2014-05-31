@@ -3,6 +3,7 @@ package com.example.tests;
 
 import org.testng.annotations.Test;
 
+
 public class ContactCreation extends TestBase {
  
 
@@ -10,9 +11,9 @@ public class ContactCreation extends TestBase {
 
   @Test
   public void testnoneEmptyContactCreation() throws Exception {
-    openMainPage();
-    openContactsPage();
-    addNewContact();
+    app.openMainPage();
+    app.openContactsPage();
+    app.addNewContact();
     ContactData contact = new ContactData();
 	contact.firstName = "FirstName1";
 	contact.lastName = "LastName1";
@@ -26,19 +27,19 @@ public class ContactCreation extends TestBase {
 	contact.birthMonth = "May";
 	contact.birthYear ="1233";
 	contact.groupName = "";
-	fillContactCreation(contact);
-    submitContactCreation();
-    returnToHomePage();
+	contact.fillContactCreation(this);
+    app.submitContactCreation();
+    app.returnToHomePage();
   }
   @Test
   public void testEmptyContactCreation() throws Exception {
-    openMainPage();
-    openContactsPage();
-    addNewContact();
+    app.openMainPage();
+    app.openContactsPage();
+    app.addNewContact();
     //ContactData contact = ;
-	fillContactCreation(new ContactData(null, null,null,null,null,null,null,null,"-","-",null,""));
-    submitContactCreation();
-    returnToHomePage();
+	new ContactData(null, null,null,null,null,null,null,null,"-","-",null,"").fillContactCreation(this);
+    app.submitContactCreation();
+    app.returnToHomePage();
   }}
 
 
