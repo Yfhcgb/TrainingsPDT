@@ -1,7 +1,5 @@
 package com.example.tests;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.Test;
 
 public class AlsoGroupCreationTests extends TestBase{
@@ -9,26 +7,26 @@ public class AlsoGroupCreationTests extends TestBase{
 
   @Test
   public void testNonEmptyGroupCreation() throws Exception {
-    openMainPage();
-    goToGroupsPage();
-    initNewGroupCreation();
+    app.getNavigationHelper().openMainPage();
+    app.getNavigationHelper().goToGroupsPage();
+    app.getGroupHelper().initNewGroupCreation();
     GroupData group = new GroupData();
     group.name= "group-name1";
     group.header="header1";
     group.footer= "footer1";
-	fillGroupForm(group);
-    submitGroupCreation();
-    goToGroupPage();
+	app.getGroupHelper().fillGroupForm(group);
+    app.getGroupHelper().submitGroupCreation();
+    app.getGroupHelper().goToGroupPage();
   }
   
   @Test
   public void testEmptyGroupCreation() throws Exception {
-    openMainPage();
-    goToGroupsPage();
-    initNewGroupCreation();
-    fillGroupForm(new GroupData("", "", ""));
-    submitGroupCreation();
-    goToGroupPage();
+    app.getNavigationHelper().openMainPage();
+    app.getNavigationHelper().goToGroupsPage();
+    app.getGroupHelper().initNewGroupCreation();
+    app.getGroupHelper().fillGroupForm(new GroupData("", "", ""));
+    app.getGroupHelper().submitGroupCreation();
+    app.getGroupHelper().goToGroupPage();
   }
 
 

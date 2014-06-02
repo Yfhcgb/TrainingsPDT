@@ -5,8 +5,10 @@
     <classes>
       <class name="com.example.tests.ContactCreationTest">
         <methods>
+          <include name="testFullContactCreation"/>
           <include name="testAnotherEmptyContactCreation"/>
           <include name="setUp"/>
+          <include name="testEmptyContactCreation"/>
           <include name="tearDown"/>
         </methods>
       </class> <!-- com.example.tests.ContactCreationTest -->

@@ -8,8 +8,8 @@ public class ContactCreationTest extends TestBase {
 
   @Test
   public void testFullContactCreation() throws Exception {
-    openMainPage();
-    initNewContactCreation();
+    app.getNavigationHelper().openMainPage();
+    app.getContactHelper().initNewContactCreation();
     ContactData contact = new ContactData();
    	contact.firstName = "FirstName1";
    	contact.lastName = "LastName1";
@@ -23,24 +23,24 @@ public class ContactCreationTest extends TestBase {
    	contact.birthMonth = "May";
    	contact.birthYear ="1233";
    	contact.groupName = "";
-   	fillContactForm(contact);
-   	submitContactCreation();
-    goToHomePageContact();
+   	app.getContactHelper().fillContactForm(contact);
+   	app.getContactHelper().submitContactCreation();
+    app.getNavigationHelper().goToHomePageContact();
   }
   @Test
   public void testEmptyContactCreation() throws Exception {
-	    openMainPage();
-	    initNewContactCreation();
-	    fillContactForm(new ContactData("", "", "", "", "", "", "", "", "-", "-", "", "", "", ""));
-	    submitContactCreation();
-	    goToHomePageContact();
+	    app.getNavigationHelper().openMainPage();
+	    app.getContactHelper().initNewContactCreation();
+	    app.getContactHelper().fillContactForm(new ContactData("", "", "", "", "", "", "", "", "-", "-", "", "", "", ""));
+	    app.getContactHelper().submitContactCreation();
+	    app.getNavigationHelper().goToHomePageContact();
 	  }
   @Test
   public void testAnotherEmptyContactCreation() throws Exception {
-	    openMainPage();
-	    initNewContactCreation();
-	    fillContactForm(new ContactData("", "", "", "", "", "", "", "", "", "", "", "", "", ""));
-	   submitContactCreation();
-	    goToHomePageContact();
+	    app.getNavigationHelper().openMainPage();
+	    app.getContactHelper().initNewContactCreation();
+	    app.getContactHelper().fillContactForm(new ContactData("", "", "", "", "", "", "", "", "", "", "", "", "", ""));
+	    app.getContactHelper().submitContactCreation();
+	    app.getNavigationHelper().goToHomePageContact();
 	  }
 }
