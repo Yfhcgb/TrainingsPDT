@@ -8,7 +8,8 @@ public void deleteSomeGroup() {
 	app.getNavigationHelper().openMainPage();
     app.getNavigationHelper().goToGroupsPage();
 	app.getGroupHelper().deleteGroup(1);
-	 app.getGroupHelper().goToGroupPage();
+	app.getGroupHelper().goToGroupPage();
+	app.getNavigationHelper().goToHomePageContact();
 	
 }
 }
